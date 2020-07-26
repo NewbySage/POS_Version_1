@@ -47,7 +47,7 @@ INSERT INTO `tbl_users` (`ID`, `Username`, `Password`, `Name`, `IsAdmin`) VALUES
 --
 -- Indexes for dumped tables
 --
-
+ 
 --
 -- Indexes for table `tbl_users`
 --
