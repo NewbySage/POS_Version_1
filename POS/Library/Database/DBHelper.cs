@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,23 +18,15 @@ namespace POS.Library.Database
     class DBHelper : DBInterface
     {
         protected MySqlConnection conn;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
         public DBHelper() {
-            server = "localhost";
-            database = "sampledb";
-            uid = "root";
-            password = "mysql";
+
             CheckConnection();
         }
 
         private void CheckConnection()
         {
-             string connectionString;
-             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+             string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
+             
             conn = new MySqlConnection(connectionString);
 
         }

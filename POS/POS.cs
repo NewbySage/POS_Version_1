@@ -38,6 +38,7 @@ namespace POS
             if (txt_barCode.Text != string.Empty)
             {
                 // Need condition if the data is exist or not in the database
+
                 Form1 fm = new Form1(txt_barCode.Text);
             }
             else
