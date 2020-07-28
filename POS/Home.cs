@@ -13,7 +13,7 @@ namespace POS
 {
     public partial class Home : Form
     {
-        private Users user;
+        private Users user = null;
         public Home(Users user)
         {
             this.user = user;

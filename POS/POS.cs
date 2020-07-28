@@ -25,12 +25,16 @@ namespace POS
             //visibility of edit item button
             if(user.IsAdmin != true)
             {
-                btn_editItem.Visible = false;
+                btn_RemoveItem.Visible = false;
             }
 
             // Set the name of the label1
             label1.Text = user.Name1;
             Refresh();
+        }
+
+        public POS() {
+            InitializeComponent();
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
