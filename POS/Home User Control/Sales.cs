@@ -18,6 +18,16 @@ namespace POS.Home_User_Control
             
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            POS pos = new POS();
+            pos.Show();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SalesInquiry sI = new SalesInquiry();
+            sI.Show();
+        }
     }
 }

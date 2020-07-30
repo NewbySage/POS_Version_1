@@ -39,18 +39,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(547, 196);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(13, 113);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 66);
+            this.button1.Size = new System.Drawing.Size(139, 66);
             this.button1.TabIndex = 2;
             this.button1.Text = "Sales Inquiry";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listView1
             // 
@@ -67,7 +69,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(24, 95);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(496, 336);
+            this.listView1.Size = new System.Drawing.Size(517, 331);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -102,14 +104,14 @@
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(547, 116);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(13, 30);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 64);
+            this.button2.Size = new System.Drawing.Size(139, 64);
             this.button2.TabIndex = 4;
             this.button2.Text = "Point of Sale";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -144,17 +146,28 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Date:";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(547, 95);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(170, 331);
+            this.panel1.TabIndex = 8;
+            // 
             // Sales
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button1);
             this.Name = "Sales";
             this.Size = new System.Drawing.Size(717, 452);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +186,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

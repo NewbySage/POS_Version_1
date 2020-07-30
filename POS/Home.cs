@@ -31,12 +31,7 @@ namespace POS
 
 
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            //POS ps = new POS(user);
-            //ps.ShowDialog();
 
-        }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {

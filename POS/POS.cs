@@ -33,6 +33,7 @@ namespace POS
             Refresh();
         }
 
+        //Debugging PurposeW
         public POS() {
             InitializeComponent();
         }
