@@ -1,6 +1,6 @@
 ﻿namespace POS
 {
-    partial class Form1
+    partial class POS_add
     {
         /// <summary>
         /// Required designer variable.
@@ -81,22 +81,22 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(256, 123);
+            this.button1.Location = new System.Drawing.Point(261, 112);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(96, 40);
             this.button1.TabIndex = 5;
             this.button1.Text = "ADD";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // POS_add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 181);
+            this.ClientSize = new System.Drawing.Size(394, 181);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "POS_add";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

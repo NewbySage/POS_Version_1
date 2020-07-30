@@ -1,6 +1,6 @@
 ﻿namespace POS
 {
-    partial class Form2
+    partial class POS_search
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-
             this.productbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-
             ((System.ComponentModel.ISupportInitialize)(this.productbDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +78,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -99,19 +98,13 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Search";
             // 
-            // productbDataSet
-            // 
-            // 
-            // productbDataSetBindingSource
-            // 
-            // 
-            // Form2
+            // POS_search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 297);
             this.Controls.Add(this.panel1);
-            this.Name = "Form2";
+            this.Name = "POS_search";
             this.Text = "Form2";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

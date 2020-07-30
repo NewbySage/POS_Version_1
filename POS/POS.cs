@@ -44,7 +44,7 @@ namespace POS
             {
                 // Need condition if the data is exist or not in the database
 
-                Form1 fm = new Form1(txt_barCode.Text);
+                POS_add fm = new POS_add(txt_barCode.Text);
             }
             else
             {
@@ -54,7 +54,12 @@ namespace POS
 
         private void btn_Search_Add_Click(object sender, EventArgs e)
         {
-            Form2 fm = new Form2();
+            POS_search fm = new POS_search();
+        }
+
+        private void backToHomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

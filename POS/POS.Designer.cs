@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -47,27 +54,19 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.backToHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,6 +99,83 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(474, 201);
             this.panel1.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(399, 80);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(63, 31);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Enter";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(353, 123);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(109, 24);
+            this.textBox5.TabIndex = 12;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(307, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Stock:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(110, 167);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(102, 24);
+            this.textBox4.TabIndex = 10;
+            this.textBox4.Text = "0";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 172);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Discount Price";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(18, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Item Name:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(95, 123);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(206, 24);
+            this.textBox3.TabIndex = 7;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -297,6 +373,11 @@
             this.columnHeader3.Text = "Qty";
             this.columnHeader3.Width = 39;
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Discount";
+            this.columnHeader6.Width = 91;
+            // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Price";
@@ -322,11 +403,17 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backToHomeToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.backToHomeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // backToHomeToolStripMenuItem
+            // 
+            this.backToHomeToolStripMenuItem.Name = "backToHomeToolStripMenuItem";
+            this.backToHomeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backToHomeToolStripMenuItem.Text = "Exit";
+            this.backToHomeToolStripMenuItem.Click += new System.EventHandler(this.backToHomeToolStripMenuItem_Click);
             // 
             // transactionToolStripMenuItem
             // 
@@ -337,6 +424,18 @@
             this.transactionToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
             // 
+            // findItemToolStripMenuItem
+            // 
+            this.findItemToolStripMenuItem.Name = "findItemToolStripMenuItem";
+            this.findItemToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.findItemToolStripMenuItem.Text = "Find Item";
+            // 
+            // checkoutToolStripMenuItem
+            // 
+            this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.checkoutToolStripMenuItem.Text = "Checkout";
+            // 
             // rEToolStripMenuItem
             // 
             this.rEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -344,6 +443,12 @@
             this.rEToolStripMenuItem.Name = "rEToolStripMenuItem";
             this.rEToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.rEToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // panel5
             // 
@@ -368,118 +473,6 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Clear Sale";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(95, 123);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(206, 24);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Item Name:";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 172);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Discount Price";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(110, 167);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(102, 24);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "0";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Discount";
-            this.columnHeader6.Width = 91;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(307, 128);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 15);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Stock:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(353, 123);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(109, 24);
-            this.textBox5.TabIndex = 12;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(399, 80);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(63, 31);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Enter";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // backToHomeToolStripMenuItem
-            // 
-            this.backToHomeToolStripMenuItem.Name = "backToHomeToolStripMenuItem";
-            this.backToHomeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.backToHomeToolStripMenuItem.Text = "Back To Home";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // findItemToolStripMenuItem
-            // 
-            this.findItemToolStripMenuItem.Name = "findItemToolStripMenuItem";
-            this.findItemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.findItemToolStripMenuItem.Text = "Find Item";
-            // 
-            // checkoutToolStripMenuItem
-            // 
-            this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
-            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.checkoutToolStripMenuItem.Text = "Checkout";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             // 
             // POS
             // 
@@ -545,7 +538,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem backToHomeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
