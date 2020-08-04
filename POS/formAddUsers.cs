@@ -10,16 +10,9 @@ using System.Windows.Forms;
 
 namespace POS
 {
-    public partial class POS_add : Form
+    public partial class adduserForm : Form
     {
-        string barcodes;
-        public POS_add(string barcode)
-        {
-            barcodes = barcode;
-            InitializeComponent();
-        }
-        //Debug puposes
-        public POS_add()
+        public adduserForm()
         {
             InitializeComponent();
         }

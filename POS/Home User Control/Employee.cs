@@ -16,5 +16,11 @@ namespace POS.Home_User_Control
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            adduserForm auf = new adduserForm();
+            auf.Show();
+        }
     }
 }

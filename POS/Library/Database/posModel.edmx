@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="posModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DiscountPrice" Type="float" Nullable="false" />
+          <Property Name="Change Price" Type="float" Nullable="false" />
+          <Property Name="DateRecorded" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_pack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="MaxQty" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="InitialPrice" Type="float" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="MinStock" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_sales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="SalesQty" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supplier" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bool" Nullable="false" />
+          <Property Name="PP" Type="longblob" Nullable="false" />
+        </EntityType>
+        <Association Name="CategoryID">
+          <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InvID">
+          <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="1" />
+          <End Role="tbl_sales" Type="Self.tbl_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_sales">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ItemID">
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
+          <End Role="tbl_pack" Type="Self.tbl_pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_pack">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProdID">
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
+          <End Role="tbl_sales" Type="Self.tbl_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_sales">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SupID">
+          <End Role="tbl_supplier" Type="Self.tbl_supplier" Multiplicity="1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserID">
+          <End Role="tbl_users" Type="Self.tbl_users" Multiplicity="1" />
+          <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_invoice">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="posModelStoreContainer">
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_invoice" EntityType="Self.tbl_invoice" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_pack" EntityType="Self.tbl_pack" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_sales" EntityType="Self.tbl_sales" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_supplier" EntityType="Self.tbl_supplier" Schema="sampledb" store:Type="Tables" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="sampledb" store:Type="Tables" />
+          <AssociationSet Name="CategoryID" Association="Self.CategoryID">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="InvID" Association="Self.InvID">
+            <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+            <End Role="tbl_sales" EntitySet="tbl_sales" />
+          </AssociationSet>
+          <AssociationSet Name="ItemID" Association="Self.ItemID">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_pack" EntitySet="tbl_pack" />
+          </AssociationSet>
+          <AssociationSet Name="ProdID" Association="Self.ProdID">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_sales" EntitySet="tbl_sales" />
+          </AssociationSet>
+          <AssociationSet Name="SupID" Association="Self.SupID">
+            <End Role="tbl_supplier" EntitySet="tbl_supplier" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="UserID" Association="Self.UserID">
+            <End Role="tbl_users" EntitySet="tbl_users" />
+            <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="posModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.CategoryID" FromRole="tbl_category" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_invoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DiscountPrice" Type="Single" Nullable="false" />
+          <Property Name="Change_Price" Type="Single" Nullable="false" />
+          <Property Name="DateRecorded" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tbl_sales" Relationship="Self.InvID" FromRole="tbl_invoice" ToRole="tbl_sales" />
+          <NavigationProperty Name="tbl_users" Relationship="Self.UserID" FromRole="tbl_invoice" ToRole="tbl_users" />
+        </EntityType>
+        <EntityType Name="tbl_pack">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="MaxQty" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.ItemID" FromRole="tbl_pack" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InitialPrice" Type="Single" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="MinStock" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_category" Relationship="Self.CategoryID" FromRole="tbl_product" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_pack" Relationship="Self.ItemID" FromRole="tbl_product" ToRole="tbl_pack" />
+          <NavigationProperty Name="tbl_sales" Relationship="Self.ProdID" FromRole="tbl_product" ToRole="tbl_sales" />
+          <NavigationProperty Name="tbl_supplier" Relationship="Self.SupID" FromRole="tbl_product" ToRole="tbl_supplier" />
+        </EntityType>
+        <EntityType Name="tbl_sales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="SalesQty" Type="Single" Nullable="false" />
+          <Property Name="Total" Type="Single" Nullable="false" />
+          <NavigationProperty Name="tbl_invoice" Relationship="Self.InvID" FromRole="tbl_sales" ToRole="tbl_invoice" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.ProdID" FromRole="tbl_sales" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.SupID" FromRole="tbl_supplier" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="PP" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="tbl_invoice" Relationship="Self.UserID" FromRole="tbl_users" ToRole="tbl_invoice" />
+        </EntityType>
+        <Association Name="CategoryID">
+          <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InvID">
+          <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="1" />
+          <End Role="tbl_sales" Type="Self.tbl_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_sales">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserID">
+          <End Role="tbl_users" Type="Self.tbl_users" Multiplicity="1" />
+          <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_invoice">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ItemID">
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
+          <End Role="tbl_pack" Type="Self.tbl_pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_pack">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProdID">
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
+          <End Role="tbl_sales" Type="Self.tbl_sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_sales">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SupID">
+          <End Role="tbl_supplier" Type="Self.tbl_supplier" Multiplicity="1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="posEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
+          <EntitySet Name="tbl_invoice" EntityType="Self.tbl_invoice" />
+          <EntitySet Name="tbl_pack" EntityType="Self.tbl_pack" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" />
+          <EntitySet Name="tbl_sales" EntityType="Self.tbl_sales" />
+          <EntitySet Name="tbl_supplier" EntityType="Self.tbl_supplier" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
+          <AssociationSet Name="CategoryID" Association="Self.CategoryID">
+            <End Role="tbl_category" EntitySet="tbl_category" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <AssociationSet Name="InvID" Association="Self.InvID">
+            <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+            <End Role="tbl_sales" EntitySet="tbl_sales" />
+          </AssociationSet>
+          <AssociationSet Name="UserID" Association="Self.UserID">
+            <End Role="tbl_users" EntitySet="tbl_users" />
+            <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+          </AssociationSet>
+          <AssociationSet Name="ItemID" Association="Self.ItemID">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_pack" EntitySet="tbl_pack" />
+          </AssociationSet>
+          <AssociationSet Name="ProdID" Association="Self.ProdID">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_sales" EntitySet="tbl_sales" />
+          </AssociationSet>
+          <AssociationSet Name="SupID" Association="Self.SupID">
+            <End Role="tbl_supplier" EntitySet="tbl_supplier" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="posModelStoreContainer" CdmEntityContainer="posEntities">
+          <EntitySetMapping Name="tbl_category">
+            <EntityTypeMapping TypeName="posModel.tbl_category">
+              <MappingFragment StoreEntitySet="tbl_category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_invoice">
+            <EntityTypeMapping TypeName="posModel.tbl_invoice">
+              <MappingFragment StoreEntitySet="tbl_invoice">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="Change_Price" ColumnName="Change Price" />
+                <ScalarProperty Name="DateRecorded" ColumnName="DateRecorded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_pack">
+            <EntityTypeMapping TypeName="posModel.tbl_pack">
+              <MappingFragment StoreEntitySet="tbl_pack">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product">
+            <EntityTypeMapping TypeName="posModel.tbl_product">
+              <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="InitialPrice" ColumnName="InitialPrice" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="MinStock" ColumnName="MinStock" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_sales">
+            <EntityTypeMapping TypeName="posModel.tbl_sales">
+              <MappingFragment StoreEntitySet="tbl_sales">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SalesQty" ColumnName="SalesQty" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_supplier">
+            <EntityTypeMapping TypeName="posModel.tbl_supplier">
+              <MappingFragment StoreEntitySet="tbl_supplier">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_users">
+            <EntityTypeMapping TypeName="posModel.tbl_users">
+              <MappingFragment StoreEntitySet="tbl_users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -32,7 +32,7 @@ namespace POS
 
 
 
-
+        // Program for Tab name of Tab Control to become vertical text
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {
             var g = e.Graphics;

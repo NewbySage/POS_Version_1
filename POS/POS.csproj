@@ -100,6 +100,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formAddUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAddUsers.Designer.cs">
+      <DependentUpon>formAddUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home User Control\Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,8 +142,42 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="Library\Database\UserDBHelper.cs" />
-    <Compile Include="Library\Database\DBHelper.cs" />
+    <Compile Include="Library\Database\posModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\posModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\posModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_category.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_invoice.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_pack.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_product.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_sales.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_supplier.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Database\tbl_users.cs">
+      <DependentUpon>posModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Library\Object\Users.cs" />
     <Compile Include="POS_Search.cs">
       <SubType>Form</SubType>
@@ -171,6 +211,9 @@
     <Compile Include="SalesInquiry.Designer.cs">
       <DependentUpon>SalesInquiry.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="formAddUsers.resx">
+      <DependentUpon>formAddUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home User Control\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +257,13 @@
     <EmbeddedResource Include="SalesInquiry.resx">
       <DependentUpon>SalesInquiry.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="Library\Database\posModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>posModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Library\Database\posModel.edmx.diagram">
+      <DependentUpon>posModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,11 +293,22 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\chart_bar.png" />
     <None Include="Resources\print.png" />
     <None Include="Resources\excel_2013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Library\Database\posModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>posModel.edmx</DependentUpon>
+      <LastGenOutput>posModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Library\Database\posModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>posModel.edmx</DependentUpon>
+      <LastGenOutput>posModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

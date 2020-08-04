@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace POS.Library.Object
 {
@@ -10,20 +12,17 @@ namespace POS.Library.Object
     {
         private string Name;
         private string Username;
-        private string Password;
+        private byte[] me;
         private bool isAdmin;
 
-        public Users(string name, string username, string password, bool isAdmin)
+        public Users()
         {
-            Name = name;
-            Username = username;
-            Password = password;
-            this.isAdmin = isAdmin;
+
         }
 
-        public string Name1 { get => Name; private set => Name = value; }
-        public string Username1 { get => Username; private set => Username = value; }
-        public string Password1 { get => Password; private set => Password = value; }
-        public bool IsAdmin { get => isAdmin; private set => isAdmin = value; }
+        public string Name1 { get => Name; set => Name = value; }
+        public string Username1 { get => Username; set => Username = value; }
+        public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
+        public byte[] Me { get => me; set => me = value; }
     }
 }

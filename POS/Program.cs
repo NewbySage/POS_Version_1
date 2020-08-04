@@ -8,6 +8,7 @@ namespace POS
 {
     static class Program
     {
+        public static ApplicationContext AppContext { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,18 @@ namespace POS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            
+            Program.AppContext = new ApplicationContext(new LoginForm());
+            Application.Run(AppContext);
+        }
+
+        //Switch Form Method
+        public static void SwitchMainForm(Form newForm)
+        {
+            var oldMainForm = AppContext.MainForm;
+            AppContext.MainForm = newForm;
+            oldMainForm?.Close();
+            newForm.Show();
         }
     }
 }
