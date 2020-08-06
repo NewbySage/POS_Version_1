@@ -18,7 +18,7 @@ namespace POS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Program.AppContext = new ApplicationContext(new LoginForm());
+            AppContext = new ApplicationContext(new LoginForm());
             Application.Run(AppContext);
         }
 
