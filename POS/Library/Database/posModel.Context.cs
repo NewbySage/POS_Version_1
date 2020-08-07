@@ -13,10 +13,10 @@ namespace POS.Library.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class posEntities : DbContext
+    public partial class posInvEntities : DbContext
     {
-        public posEntities()
-            : base("name=posEntities")
+        public posInvEntities()
+            : base("name=posInvEntities")
         {
         }
     

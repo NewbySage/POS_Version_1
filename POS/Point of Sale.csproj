@@ -8,13 +8,15 @@
     <ProjectGuid>{F40AEEF6-9D8F-47B2-92D2-6AC80B498FA1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>POS</RootNamespace>
-    <AssemblyName>POS</AssemblyName>
+    <AssemblyName>Point of Sale</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,8 +31,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -38,9 +38,12 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Point of Sale.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Point of Sale.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -75,6 +79,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Linq.Dynamic.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.2.0\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -140,6 +147,19 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory\formSC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\formSC.Designer.cs">
+      <DependentUpon>formSC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\formSCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\formSCAdd.Designer.cs">
+      <DependentUpon>formSCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Class\LInqToEDM.cs" />
     <Compile Include="Library\Database\posModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -176,6 +196,8 @@
     <Compile Include="Library\Database\tbl_users.cs">
       <DependentUpon>posModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Library\Object\Product.cs" />
+    <Compile Include="Library\Object\SuppAndCat.cs" />
     <Compile Include="Library\Object\Users.cs" />
     <Compile Include="POS_Search.cs">
       <SubType>Form</SubType>
@@ -195,11 +217,11 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="POS.cs">
+    <Compile Include="PointofSale.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="POS.Designer.cs">
-      <DependentUpon>POS.cs</DependentUpon>
+      <DependentUpon>PointofSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +252,12 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\formSC.resx">
+      <DependentUpon>formSC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\formSCAdd.resx">
+      <DependentUpon>formSCAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="POS_Search.resx">
       <DependentUpon>POS_Search.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,7 +268,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POS.resx">
-      <DependentUpon>POS.cs</DependentUpon>
+      <DependentUpon>PointofSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -263,6 +291,8 @@
       <DependentUpon>posModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Point of Sale.ruleset" />
+    <None Include="POS.csproj" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -291,11 +321,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chart_bar.png" />
-    <None Include="Resources\print.png" />
-    <None Include="Resources\excel_2013.png" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Library\Database\posModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -307,6 +333,9 @@
       <DependentUpon>posModel.edmx</DependentUpon>
       <LastGenOutput>posModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\chart_bar.png" />
+    <Content Include="Resources\excel_2013.png" />
+    <Content Include="Resources\print.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

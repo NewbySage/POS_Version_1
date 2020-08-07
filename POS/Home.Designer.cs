@@ -32,6 +32,7 @@ namespace POS
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -40,7 +41,6 @@ namespace POS
             this.tabInven = new System.Windows.Forms.TabPage();
             this.tabEmp = new System.Windows.Forms.TabPage();
             this.tabSetting = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +60,16 @@ namespace POS
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 86);
             this.panel3.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(207, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Image";
             // 
             // panel4
             // 
@@ -149,16 +159,6 @@ namespace POS
             this.tabSetting.TabIndex = 4;
             this.tabSetting.Text = "Setting";
             this.tabSetting.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(207, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Image";
             // 
             // menuStrip1
             // 

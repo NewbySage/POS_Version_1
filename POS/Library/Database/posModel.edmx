@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="posModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="posModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_category">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,6 +44,7 @@
           <Property Name="Barcode" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="DateRestock" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_sales">
           <Key>
@@ -178,8 +179,7 @@
             <End Role="tbl_invoice" EntitySet="tbl_invoice" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="posModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -230,6 +230,7 @@
           <NavigationProperty Name="tbl_pack" Relationship="Self.ItemID" FromRole="tbl_product" ToRole="tbl_pack" />
           <NavigationProperty Name="tbl_sales" Relationship="Self.ProdID" FromRole="tbl_product" ToRole="tbl_sales" />
           <NavigationProperty Name="tbl_supplier" Relationship="Self.SupID" FromRole="tbl_product" ToRole="tbl_supplier" />
+          <Property Name="DateRestock" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_sales">
           <Key>
@@ -335,7 +336,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="posEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="posInvEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
           <EntitySet Name="tbl_invoice" EntityType="Self.tbl_invoice" />
           <EntitySet Name="tbl_pack" EntityType="Self.tbl_pack" />
@@ -373,7 +374,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="posModelStoreContainer" CdmEntityContainer="posEntities">
+        <EntityContainerMapping StorageEntityContainer="posModelStoreContainer" CdmEntityContainer="posInvEntities">
           <EntitySetMapping Name="tbl_category">
             <EntityTypeMapping TypeName="posModel.tbl_category">
               <MappingFragment StoreEntitySet="tbl_category">
@@ -407,6 +408,7 @@
           <EntitySetMapping Name="tbl_product">
             <EntityTypeMapping TypeName="posModel.tbl_product">
               <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="DateRestock" ColumnName="DateRestock" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="InitialPrice" ColumnName="InitialPrice" />

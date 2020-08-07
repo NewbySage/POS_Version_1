@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POS
@@ -17,8 +14,8 @@ namespace POS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            AppContext = new ApplicationContext(new LoginForm());
+
+            AppContext = new ApplicationContext(new Home());
             Application.Run(AppContext);
         }
 

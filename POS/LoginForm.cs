@@ -29,7 +29,7 @@ namespace POS
             if (txtUsername.Text != string.Empty && txtPassword.Text != string.Empty) {
                 
                 //Entity Data Model pos Entities new Instance and linq query
-                posEntities pe = new posEntities();
+                posInvEntities pe = new posInvEntities();
                 List<Users> users = (from p in pe.tbl_users
                              where p.Username == txtUsername.Text && p.Password == txtPassword.Text
                              select new Users 
@@ -40,6 +40,7 @@ namespace POS
                                  Me = p.PP
                              }).ToList();
                 Users user = (users.Count != 0) ? users[0] : null;
+                pe.Dispose();
 
 
                 //Condition if the user is exist or not
@@ -47,7 +48,6 @@ namespace POS
                 {
                     if (user.IsAdmin == true) {
                         Home hm = new Home(user);
-                        hm.TopMost = true;
                         Program.SwitchMainForm(hm);
                     }
                     else

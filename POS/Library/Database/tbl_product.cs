@@ -29,6 +29,7 @@ namespace POS.Library.Database
         public string Barcode { get; set; }
         public int SupplierID { get; set; }
         public int CategoryID { get; set; }
+        public System.DateTime DateRestock { get; set; }
     
         public virtual tbl_category tbl_category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
