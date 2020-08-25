@@ -17,7 +17,6 @@ namespace POS.Library.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_product()
         {
-            this.tbl_pack = new HashSet<tbl_pack>();
             this.tbl_sales = new HashSet<tbl_sales>();
         }
     
@@ -30,12 +29,12 @@ namespace POS.Library.Database
         public int SupplierID { get; set; }
         public int CategoryID { get; set; }
         public System.DateTime DateRestock { get; set; }
+        public sbyte isByPack { get; set; }
     
         public virtual tbl_category tbl_category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_pack> tbl_pack { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_sales> tbl_sales { get; set; }
         public virtual tbl_supplier tbl_supplier { get; set; }
+        public virtual tbl_pack tbl_pack { get; set; }
     }
 }

@@ -26,8 +26,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="MaxQty" Type="int" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -42,6 +41,7 @@
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="MinStock" Type="int" Nullable="false" />
           <Property Name="Barcode" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="isByPack" Type="tinyint" Nullable="false" />
           <Property Name="SupplierID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="DateRestock" Type="datetime" Precision="0" Nullable="false" />
@@ -98,15 +98,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ItemID">
+        <Association Name="PP">
           <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
-          <End Role="tbl_pack" Type="Self.tbl_pack" Multiplicity="*" />
+          <End Role="tbl_pack" Type="Self.tbl_pack" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="tbl_product">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tbl_pack">
-              <PropertyRef Name="ItemID" />
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -162,7 +162,7 @@
             <End Role="tbl_invoice" EntitySet="tbl_invoice" />
             <End Role="tbl_sales" EntitySet="tbl_sales" />
           </AssociationSet>
-          <AssociationSet Name="ItemID" Association="Self.ItemID">
+          <AssociationSet Name="PP" Association="Self.PP">
             <End Role="tbl_product" EntitySet="tbl_product" />
             <End Role="tbl_pack" EntitySet="tbl_pack" />
           </AssociationSet>
@@ -208,11 +208,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemID" Type="Int32" Nullable="false" />
           <Property Name="MaxQty" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbl_product" Relationship="Self.ItemID" FromRole="tbl_pack" ToRole="tbl_product" />
+          <NavigationProperty Name="tbl_product" Relationship="posModel.PP" FromRole="tbl_pack" ToRole="tbl_product" />
         </EntityType>
         <EntityType Name="tbl_product">
           <Key>
@@ -227,10 +226,11 @@
           <Property Name="SupplierID" Type="Int32" Nullable="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbl_category" Relationship="Self.CategoryID" FromRole="tbl_product" ToRole="tbl_category" />
-          <NavigationProperty Name="tbl_pack" Relationship="Self.ItemID" FromRole="tbl_product" ToRole="tbl_pack" />
           <NavigationProperty Name="tbl_sales" Relationship="Self.ProdID" FromRole="tbl_product" ToRole="tbl_sales" />
           <NavigationProperty Name="tbl_supplier" Relationship="Self.SupID" FromRole="tbl_product" ToRole="tbl_supplier" />
           <Property Name="DateRestock" Type="DateTime" Nullable="false" />
+          <Property Name="isByPack" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="tbl_pack" Relationship="posModel.PP" FromRole="tbl_product" ToRole="tbl_pack" />
         </EntityType>
         <EntityType Name="tbl_sales">
           <Key>
@@ -300,18 +300,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ItemID">
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
-          <End Role="tbl_pack" Type="Self.tbl_pack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="tbl_pack">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ProdID">
           <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="1" />
           <End Role="tbl_sales" Type="Self.tbl_sales" Multiplicity="*" />
@@ -356,10 +344,6 @@
             <End Role="tbl_users" EntitySet="tbl_users" />
             <End Role="tbl_invoice" EntitySet="tbl_invoice" />
           </AssociationSet>
-          <AssociationSet Name="ItemID" Association="Self.ItemID">
-            <End Role="tbl_product" EntitySet="tbl_product" />
-            <End Role="tbl_pack" EntitySet="tbl_pack" />
-          </AssociationSet>
           <AssociationSet Name="ProdID" Association="Self.ProdID">
             <End Role="tbl_product" EntitySet="tbl_product" />
             <End Role="tbl_sales" EntitySet="tbl_sales" />
@@ -368,7 +352,23 @@
             <End Role="tbl_supplier" EntitySet="tbl_supplier" />
             <End Role="tbl_product" EntitySet="tbl_product" />
           </AssociationSet>
+          <AssociationSet Name="PP" Association="posModel.PP">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_pack" EntitySet="tbl_pack" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="PP">
+          <End Type="posModel.tbl_product" Role="tbl_product" Multiplicity="1" />
+          <End Type="posModel.tbl_pack" Role="tbl_pack" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_pack">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -398,7 +398,6 @@
             <EntityTypeMapping TypeName="posModel.tbl_pack">
               <MappingFragment StoreEntitySet="tbl_pack">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -408,6 +407,7 @@
           <EntitySetMapping Name="tbl_product">
             <EntityTypeMapping TypeName="posModel.tbl_product">
               <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="isByPack" ColumnName="isByPack" />
                 <ScalarProperty Name="DateRestock" ColumnName="DateRestock" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />

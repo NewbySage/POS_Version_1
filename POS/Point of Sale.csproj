@@ -69,6 +69,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="IronBarCode, Version=2020.6.0.0, Culture=neutral, PublicKeyToken=b971bb3971bdf306, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarCode.2020.6.0\lib\net40\IronBarCode.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -78,6 +81,9 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.7.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Linq.Dynamic.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.2.0\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
@@ -86,6 +92,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -147,6 +154,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory\formAddEditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory\formAddEditItem.Designer.cs">
+      <DependentUpon>formAddEditItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory\formSC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +209,8 @@
     <Compile Include="Library\Database\tbl_users.cs">
       <DependentUpon>posModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Library\Object\ComboBoxItem.cs" />
+    <Compile Include="Library\Object\Pack.cs" />
     <Compile Include="Library\Object\Product.cs" />
     <Compile Include="Library\Object\SuppAndCat.cs" />
     <Compile Include="Library\Object\Users.cs" />
@@ -251,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory\formAddEditItem.resx">
+      <DependentUpon>formAddEditItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory\formSC.resx">
       <DependentUpon>formSC.cs</DependentUpon>

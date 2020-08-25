@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS.Inventory;
+using System;
 using System.Windows.Forms;
 
 namespace POS

@@ -23,15 +23,22 @@ namespace POS.Library.Class
                 product = (from p in pe.tbl_product
                            join c in pe.tbl_category on p.CategoryID equals c.ID
                            join s in pe.tbl_supplier on p.SupplierID equals s.ID
+                           
                            select new Product
                            {
+                               ID = p.ID,
                                Barcode = p.Barcode,
                                Description = p.ItemName,
                                InitialPrice = p.InitialPrice,
                                Category = c.TypeName,
+                               CategoryID = c.ID,
                                Stock = p.Stock,
                                Supplier = s.Supplier,
-                               DateRestock = p.DateRestock
+                               SupplierID = s.ID,
+                               MinStock = p.MinStock,
+                               DateRestock = p.DateRestock,
+                               isByPack = p.isByPack,
+                               ByPack = p.tbl_pack
                            }).Where(columnName +".Contains(@0)",searchTerm).ToList();
             }
             else
@@ -40,16 +47,24 @@ namespace POS.Library.Class
                 product = (from p in pe.tbl_product
                           join c in pe.tbl_category on p.CategoryID equals c.ID
                           join s in pe.tbl_supplier on p.SupplierID equals s.ID
-                          select new Product
+                          
+                           select new Product
                           {
-                             Barcode = p.Barcode,
-                             Description = p.ItemName,
-                             InitialPrice = p.InitialPrice,
-                             Category = c.TypeName,
-                             Stock = p.Stock,
-                             Supplier = s.Supplier,
-                             DateRestock = p.DateRestock
-                          }).ToList();
+                              ID = p.ID,
+                              Barcode = p.Barcode,
+                              Description = p.ItemName,
+                              InitialPrice = p.InitialPrice,
+                              Category = c.TypeName,
+                              Stock = p.Stock,
+                              Supplier = s.Supplier,
+                              CategoryID = c.ID,
+                              SupplierID = s.ID,
+                              DateRestock = p.DateRestock,
+                              MinStock = p.MinStock,
+                               //Working Progress
+                               isByPack = p.isByPack,
+                               ByPack = p.tbl_pack
+                           }).ToList();
 
             }
 
@@ -110,6 +125,83 @@ namespace POS.Library.Class
                 }
             }
             return list;
+        }
+
+        public static void CUD(posInvEntities pe, string mode,Product product)
+        {
+
+            switch(mode){
+                case "Add":
+                    tbl_product prod = new tbl_product()
+                    {
+                        Barcode = product.Barcode,
+                        ItemName = product.Description,
+                        InitialPrice = product.InitialPrice,
+                        CategoryID = product.CategoryID,
+                        SupplierID = product.SupplierID,
+                        Stock = product.Stock,
+                        MinStock = product.MinStock,
+                        DateRestock = product.DateRestock,
+                    };
+                    pe.tbl_product.Add(prod);
+
+                    if (Convert.ToBoolean(product.isByPack) != true)
+                    {
+                        tbl_pack pc = new tbl_pack()
+                        {
+                            ID = product.ID,
+                            MaxQty = product.ByPack.MaxQty,
+                            Qty = product.ByPack.Qty,
+                            Price = product.ByPack.Price
+                        };
+                        pe.tbl_pack.Add(pc);
+                    }
+                    pe.SaveChanges();
+                    break;
+                case "Edit":
+                    tbl_product prod1 = pe.tbl_product.Find(product.ID);
+                    prod1.Barcode = product.Barcode;
+                    prod1.ItemName = product.Description;
+                    prod1.InitialPrice = product.InitialPrice;
+                    prod1.CategoryID = product.CategoryID;
+                    prod1.SupplierID = product.SupplierID;
+                    prod1.Stock = product.Stock;
+                    prod1.MinStock = product.MinStock;
+                    prod1.DateRestock = product.DateRestock;
+                    prod1.isByPack = product.isByPack;
+                    if (Convert.ToBoolean(product.isByPack) != true)
+                    {
+                        if(prod1.tbl_pack != null)
+                        {
+                            tbl_pack tbp = pe.tbl_pack.Find(product.ByPack.ID);
+                            tbp.MaxQty = product.ByPack.MaxQty;
+                            tbp.Qty = product.ByPack.Qty;
+                            tbp.Price = product.ByPack.Price;
+
+                        }
+                        else
+                        {
+                            tbl_pack pc = new tbl_pack()
+                            {
+                                ID = product.ID,
+                                MaxQty = product.ByPack.MaxQty,
+                                Qty = product.ByPack.Qty,
+                                Price = product.ByPack.Price
+                            };
+                            pe.tbl_pack.Add(pc);
+                        }
+                    }
+                    pe.SaveChanges();
+                    break;
+                case "Delete":
+                    tbl_product prod2 = pe.tbl_product.Find(product.ID);
+                    tbl_pack cc = prod2.tbl_pack;
+                    pe.tbl_product.Remove(prod2);
+                    pe.tbl_pack.Remove(cc);
+                    pe.SaveChanges();
+                    break;
+            }
+
         }
     }
 }

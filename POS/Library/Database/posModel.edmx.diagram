@@ -15,9 +15,9 @@
         <AssociationConnector Association="posModel.CategoryID" ManuallyRouted="false" />
         <AssociationConnector Association="posModel.InvID" ManuallyRouted="false" />
         <AssociationConnector Association="posModel.UserID" ManuallyRouted="false" />
-        <AssociationConnector Association="posModel.ItemID" ManuallyRouted="false" />
         <AssociationConnector Association="posModel.ProdID" ManuallyRouted="false" />
         <AssociationConnector Association="posModel.SupID" ManuallyRouted="false" />
+        <AssociationConnector Association="posModel.PP" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

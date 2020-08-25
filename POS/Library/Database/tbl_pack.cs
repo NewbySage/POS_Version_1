@@ -15,7 +15,6 @@ namespace POS.Library.Database
     public partial class tbl_pack
     {
         public int ID { get; set; }
-        public int ItemID { get; set; }
         public int MaxQty { get; set; }
         public int Qty { get; set; }
         public int Price { get; set; }
