@@ -30,11 +30,9 @@ namespace POS.Library.Class
                                Barcode = p.Barcode,
                                Description = p.ItemName,
                                InitialPrice = p.InitialPrice,
-                               Category = c.TypeName,
-                               CategoryID = c.ID,
+                               Category = new ComboBoxItem() { Text = c.TypeName, Value = c.ID },
                                Stock = p.Stock,
-                               Supplier = s.Supplier,
-                               SupplierID = s.ID,
+                               Supplier = new ComboBoxItem() { Text = s.Supplier, Value = s.ID },
                                MinStock = p.MinStock,
                                DateRestock = p.DateRestock,
                                isByPack = p.isByPack,
@@ -54,16 +52,12 @@ namespace POS.Library.Class
                               Barcode = p.Barcode,
                               Description = p.ItemName,
                               InitialPrice = p.InitialPrice,
-                              Category = c.TypeName,
-                              Stock = p.Stock,
-                              Supplier = s.Supplier,
-                              CategoryID = c.ID,
-                              SupplierID = s.ID,
+                              Category = new ComboBoxItem() { Text = c.TypeName, Value = c.ID },
+                              Supplier = new ComboBoxItem() { Text = s.Supplier, Value = s.ID },
                               DateRestock = p.DateRestock,
                               MinStock = p.MinStock,
-                               //Working Progress
-                               isByPack = p.isByPack,
-                               ByPack = p.tbl_pack
+                              isByPack = p.isByPack,
+                              ByPack = p.tbl_pack
                            }).ToList();
 
             }
@@ -137,8 +131,8 @@ namespace POS.Library.Class
                         Barcode = product.Barcode,
                         ItemName = product.Description,
                         InitialPrice = product.InitialPrice,
-                        CategoryID = product.CategoryID,
-                        SupplierID = product.SupplierID,
+                       CategoryID = product.Category.Value,
+                       SupplierID = product.Supplier.Value,
                         Stock = product.Stock,
                         MinStock = product.MinStock,
                         DateRestock = product.DateRestock,
@@ -163,8 +157,8 @@ namespace POS.Library.Class
                     prod1.Barcode = product.Barcode;
                     prod1.ItemName = product.Description;
                     prod1.InitialPrice = product.InitialPrice;
-                    prod1.CategoryID = product.CategoryID;
-                    prod1.SupplierID = product.SupplierID;
+                    prod1.CategoryID = product.Category.Value;
+                    prod1.SupplierID = product.Supplier.Value;
                     prod1.Stock = product.Stock;
                     prod1.MinStock = product.MinStock;
                     prod1.DateRestock = product.DateRestock;

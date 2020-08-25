@@ -50,8 +50,8 @@ namespace POS.Home_User_Control
             dataGridView1.DataSource = product;
             dataGridView1.Columns["ID"].Visible = false;
             dataGridView1.Columns["MinStock"].Visible = false;
-            dataGridView1.Columns["CategoryID"].Visible = false;
-            dataGridView1.Columns["SupplierID"].Visible = false;
+            //dataGridView1.Columns["CategoryID"].Visible = false;
+            //dataGridView1.Columns["SupplierID"].Visible = false;
             dataGridView1.Columns["ByPack"].Visible = false;
             dataGridView1.Columns["isByPack"].Visible = false;
             dataGridView1.Refresh();
@@ -67,9 +67,10 @@ namespace POS.Home_User_Control
             else
             {
                 product.Add(prod);
+                //dataGridView1.Refresh();
                 dataGridView1.DataSource = null;
             }
-            populateDGV();
+          populateDGV();
 
         }
 

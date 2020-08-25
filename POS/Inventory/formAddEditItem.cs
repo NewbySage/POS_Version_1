@@ -27,20 +27,13 @@ namespace POS.Inventory
             Modes = mode;
             product = new Product();
             pe = new posInvEntities();
+            product.Category = new ComboBoxItem();
+            product.Supplier = new ComboBoxItem();
             this.user = user;
             InitializeComponent();
             Init();
         }
 
-        //Debug
-        public formAddEditItem()
-        {
-            Modes = "Add";
-            product = new Product();
-            pe = new posInvEntities();
-            InitializeComponent();
-            Init();
-        }
 
         //Edit Constructor
         public formAddEditItem(string mode,Product product, Home_User_Control.Inventory user)
@@ -86,6 +79,7 @@ namespace POS.Inventory
             cbSupp.DataSource = sup;
             cbSupp.DisplayMember = "Text";
             cbSupp.ValueMember = "Value";
+           
             
 
 
@@ -97,8 +91,8 @@ namespace POS.Inventory
             txtMStock.DataBindings.Add("Text", product, "MinStock", true, DataSourceUpdateMode.OnPropertyChanged);
             txtStock.DataBindings.Add("Text", product, "Stock", true, DataSourceUpdateMode.OnPropertyChanged);
             txtPrice.DataBindings.Add("Text", product, "InitialPrice", true, DataSourceUpdateMode.OnPropertyChanged);
-            cbCat.DataBindings.Add("SelectedValue", product, "CategoryID", true, DataSourceUpdateMode.OnPropertyChanged);
-            cbSupp.DataBindings.Add("SelectedValue", product, "SupplierID", true, DataSourceUpdateMode.OnPropertyChanged);
+            cbCat.DataBindings.Add("SelectedValue", product, "Category.Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            cbSupp.DataBindings.Add("SelectedValue", product, "Supplier.Value", true, DataSourceUpdateMode.OnPropertyChanged);
             checkBox2.DataBindings.Add("Checked", product, "isBypack", true, DataSourceUpdateMode.OnPropertyChanged);
             
 
@@ -134,6 +128,11 @@ namespace POS.Inventory
                 if ((Modes == "Add") ? (!(pe.tbl_product.Any(a => a.Barcode == txtBarcode.Text))  && !(pe.tbl_product.Any(b => b.ItemName == txtDesc.Text))): true)
                 {
                     //Product product = new Product(txtBarcode.Text,txtDesc.Text,float.Parse(txtPrice.Text),(int)cbCat.SelectedValue,int.Parse(txtStock.Text),int.Parse(txtMStock.Text),(int)cbSupp.SelectedValue,DateTime.ParseExact(txtDate.Text, "yyyy-MM-dd HH:mm tt", null));
+                    ///
+                    product.Supplier.Text = cbSupp.SelectedItem.ToString();
+                    product.Category.Text = cbCat.SelectedItem.ToString();
+                   ///
+                    
                     LInqToEDM.CUD(pe, Modes, product);
                     user.passData(product,Modes);
                     string message = (Modes == "Add") ? "Successfully Add" : "Successfully Edit";

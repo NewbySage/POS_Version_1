@@ -8,6 +8,10 @@ namespace POS.Library.Object
 {
     public class ComboBoxItem
     {
+        public override string ToString()
+        {
+            return this.Text;
+        }
         public ComboBoxItem(string text, int value)
         {
             Text = text;
